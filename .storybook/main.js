@@ -12,5 +12,18 @@ module.exports = {
   "framework": {
     "name": "@storybook/react-webpack5",
     "options": {}
-  }
+  },
+  webpackFinal: async (config) => {
+    // toggle this to true to fix the issue
+    const enableThis = false
+    
+    if(enableThis) {
+      config.watchOptions = {
+        ...config.watchOptions,
+        aggregateTimeout: 60,
+      }
+    }
+
+    return config
+  },
 }
